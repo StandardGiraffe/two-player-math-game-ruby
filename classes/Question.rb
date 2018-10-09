@@ -2,9 +2,9 @@ class Question
 
   attr_reader :correct_answer
 
-  def initialize
-    @first_number = rand(1..20)
-    @second_number = rand(1..20)
+  def initialize(question_cap)
+    @first_number = rand((question_cap / 5).to_i..(question_cap))
+    @second_number = rand((question_cap / 5).to_i..(question_cap))
     @correct_answer = @first_number + @second_number
   end
 
