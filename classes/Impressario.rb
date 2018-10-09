@@ -51,10 +51,10 @@ class Impressario
 
   #concludes the game, reporting the winner
   def end_game
-    puts "\n\n______________________ GAME OVER ______________________"
-    puts "#{@active_player.name}, you've run out of lives.  You're right dead."
+    puts "\n\n________ GAME OVER ________"
+    puts "#{@active_player.name}, you've run out of lives.\nYou're RIGHT DEAD.\n\n"
     switch_player!
-    puts "#{@active_player.name}, you had #{@active_player.lives} #{(@active_player.lives) == 1 ? "life" : "lives"} remaining, and win!\nBy which we mean, you didn't die.\nRight now.\n\nGood.\n\n\n"
+    puts "#{@active_player.name}, you had #{@active_player.lives} #{(@active_player.lives) == 1 ? "life" : "lives"} remaining and survived for #{(@which_round / 2).to_i} rounds, which means YOU WIN!\n... By which we mean, you didn't die.\nRight now.\n\nGood...\n\n\n"
   end
 
   # Runs through a standard round for the active player
@@ -66,6 +66,7 @@ class Impressario
         puts "#{@active_player.name}, you have #{@active_player.lives} lives remaining.\n"
         print "#{@active_player.name}, #{question.display_question} "
         answer = gets.chomp.to_i
+
         if question.correct?(answer)
           puts "Well done, #{@active_player.name}!  #{answer} was the correct answer.  You don't die today.\nSo, let's make the questions HARDER.\n\n"
           @question_cap = (@question_cap*rand(1.0..2.5)).to_i
