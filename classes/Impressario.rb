@@ -63,12 +63,12 @@ class Impressario
         switch_player!
         question = Question.new(@question_cap)
         puts "________ Question #{@which_round} ________"
-        puts "#{@active_player.name}, you have #{@active_player.lives} lives remaining.\n"
+        puts "#{@active_player.name}, you have #{@active_player.lives} #{(@active_player.lives) == 1 ? "life" : "lives"} remaining.\n"
         print "#{@active_player.name}, #{question.display_question} "
         answer = gets.chomp.to_i
 
         if question.correct?(answer)
-          puts "Well done, #{@active_player.name}!  #{answer} was the correct answer.  You don't die today.\nSo, let's make the questions HARDER.\n\n"
+          puts "Well done, #{@active_player.name}!  #{answer} was the correct answer.  You don't die today.\n...So, let's make the questions HARDER.\n\n"
           @question_cap = (@question_cap*rand(1.0..2.5)).to_i
         else
           puts "Yegads, #{answer}?!  Nope, nope, nope.  It was #{question.correct_answer}.  You DIE!  (Once.)\n\n"
